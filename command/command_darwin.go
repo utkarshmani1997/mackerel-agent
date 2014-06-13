@@ -11,6 +11,7 @@ import (
 func specGenerators() []spec.Generator {
 	return []spec.Generator{
 		&specDarwin.KernelGenerator{},
+		&specDarwin.MemoryGenerator{},
 	}
 }
 
