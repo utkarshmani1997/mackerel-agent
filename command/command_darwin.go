@@ -22,9 +22,9 @@ func metricsGenerators(conf config.Config) []metrics.Generator {
 	generators := []metrics.Generator{
 		&metricsDarwin.Loadavg5Generator{},
 	}
-	// for _, pluginConfig := range conf.Plugin["metrics"] {
-	// 	generators = append(generators, &metricsDarwin.PluginGenerator{pluginConfig})
-	// }
+	for _, pluginConfig := range conf.Plugin["metrics"] {
+		generators = append(generators, &metrics.PluginGenerator{pluginConfig})
+	}
 
 	return generators
 }
