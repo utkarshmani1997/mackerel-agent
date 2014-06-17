@@ -23,7 +23,7 @@ func TestMemoryGenerator_Generate(t *testing.T) {
 
 	matched, err := regexp.MatchString(`^\d+kB$`, totalMemory)
 	if err != nil {
-		t.Error(err)
+		t.Fatal(err)
 	}
 	if !matched {
 		t.Errorf("Total must be of form ###kB: %q", totalMemory)
