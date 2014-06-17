@@ -23,6 +23,7 @@ func interfaceGenerator() spec.Generator {
 func metricsGenerators(conf config.Config) []metrics.Generator {
 	generators := []metrics.Generator{
 		&metricsDarwin.Loadavg5Generator{},
+		&metricsDarwin.CpuusageGenerator{},
 	}
 	for _, pluginConfig := range conf.Plugin["metrics"] {
 		generators = append(generators, &metrics.PluginGenerator{pluginConfig})
