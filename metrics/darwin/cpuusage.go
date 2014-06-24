@@ -26,11 +26,12 @@ var iostatFieldToMetricName = []string{"user", "system", "idle"}
 // - cpu.idle.percentage
 func (g *CpuusageGenerator) Generate() (metrics.Values, error) {
 
-	// $ iostat -n0
+	// $ iostat -n0 -c2
 	//         cpu     load average
 	//    us sy id   1m   5m   15m
-	//    13  7 81  1.93 2.23 2.65
-	iostatBytes, err := exec.Command("iostat", "-n0").Output()
+  //    13  7 81  1.93 2.23 2.65
+  //    13  7 81  1.93 2.23 2.65
+	iostatBytes, err := exec.Command("iostat", "-n0", "-c2").Output()
 	if err != nil {
 		cpuusageLogger.Errorf("Failed to invoke iostat: %s", err)
 		return nil, err
@@ -38,11 +39,11 @@ func (g *CpuusageGenerator) Generate() (metrics.Values, error) {
 
 	iostat := string(iostatBytes)
 	lines := strings.Split(iostat, "\n")
-	if len(lines) != 4 {
+	if len(lines) != 5 {
 		return nil, fmt.Errorf("iostat result malformed: [%q]", iostat)
 	}
 
-	fields := strings.Fields(lines[2])
+	fields := strings.Fields(lines[3])
 	if len(fields) < len(iostatFieldToMetricName) {
 		return nil, fmt.Errorf("iostat result malformed: [%q]", iostat)
 	}
