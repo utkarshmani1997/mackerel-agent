@@ -3,7 +3,6 @@
 package command
 
 import (
-	"os"
 	"reflect"
 	"testing"
 	"time"
@@ -12,7 +11,7 @@ import (
 	"github.com/mackerelio/mackerel-agent/mackerel"
 )
 
-var diceCommand = "../example/metrics-plugins/dice-with-meta.rb"
+var diceCommand = "ruby ../example/metrics-plugins/dice-with-meta.rb"
 
 func TestRunOnce(t *testing.T) {
 	if testing.Short() {
@@ -44,10 +43,6 @@ func TestRunOnce(t *testing.T) {
 }
 
 func TestRunOncePayload(t *testing.T) {
-	if os.Getenv("TRAVIS") != "" {
-		t.Skip("Skip in travis")
-	}
-
 	if testing.Short() {
 		origMetricsInterval := metricsInterval
 		metricsInterval = 1
