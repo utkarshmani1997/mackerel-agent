@@ -5,6 +5,9 @@ import:
 - package: github.com/Songmu/retry
 - package: github.com/Songmu/timeout
 - package: github.com/motemen/go-cli
+- package: github.com/shirou/gopsutil
+  subpackages:
+  - host
 - package: golang.org/x/sys
   subpackages:
   - windows/svc

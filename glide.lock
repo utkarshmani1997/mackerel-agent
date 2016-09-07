@@ -1,24 +1,41 @@
-hash: 01dbd7687d4bcac42514ff5e017af8d1de1d9e6390fecffaa81677c02922901b
-updated: 2016-06-12T01:07:42.189378565+09:00
+hash: ad33173d018972efb6360cdc5cc98004f418e00b1b7229498390149e40b8d6c2
+updated: 2016-09-08T00:51:45.22133597+09:00
 imports:
 - name: github.com/BurntSushi/toml
-  version: f0aeabca5a127c4078abb8c8d64298b147264b55
+  version: 99064174e013895bbd9b025c31100bd1d9b590ca
+- name: github.com/go-ole/go-ole
+  version: 7dfdcf409020452e29b4babcbb22f984d2aa308a
+  subpackages:
+  - oleutil
 - name: github.com/mattn/go-isatty
-  version: 56b76bdf51f7708750eac80fa38b952bb9f32639
+  version: 66b8e73f3f5cda9f96b69efd03dd3d7fc4a5cdb8
 - name: github.com/motemen/go-cli
   version: c859ad8358c0914bb6f913c49a0b3e84b7543f33
+- name: github.com/shirou/gopsutil
+  version: f20771d32a54adb88336a17e26b511fdc8f6cc08
+  subpackages:
+  - host
+  - internal/common
+  - process
+  - cpu
+  - mem
+  - net
+- name: github.com/shirou/w32
+  version: 3c9377fc6748f222729a8270fe2775d149a249ad
 - name: github.com/Songmu/prompter
   version: f49666b0047d12850875d771340e1d862d9e7a0c
 - name: github.com/Songmu/retry
-  version: 19234d8a98212dc3a5e50d7defcf92805255eb54
+  version: 8a08e074f774598e288a170169bb5a0aa46870e8
 - name: github.com/Songmu/timeout
   version: 84831c43cf48f6b1d52c64ed499d714ffd62eca1
+- name: github.com/StackExchange/wmi
+  version: e54cbda6595d7293a7a468ccf9525f6bc8887f99
 - name: golang.org/x/crypto
-  version: 77f4136a99ffb5ecdbdd0226bd5cb146cf56bc0e
+  version: 9e590154d2353f3f5e1b24da7275686040dcf491
   subpackages:
   - ssh/terminal
 - name: golang.org/x/sys
-  version: 7f918dd405547ecb864d14a8ecbbfe205b5f930f
+  version: 30de6d19a3bd89a5f38ae4028e23aaa5582648af
   subpackages:
   - windows/svc
   - windows/svc/eventlog
