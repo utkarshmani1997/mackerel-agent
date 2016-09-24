@@ -14,6 +14,7 @@ import (
 
 	"github.com/mackerelio/mackerel-agent/logging"
 	"github.com/mackerelio/mackerel-agent/metrics"
+	"github.com/mackerelio/mackerel-agent/util"
 )
 
 /*
@@ -101,7 +102,7 @@ func parseDiskStats(r io.Reader) (metrics.Values, error) {
 			diskLogger.Warningf("Failed to parse disk metrics: %s", text)
 			continue
 		}
-		device := regexp.MustCompile(`[^A-Za-z0-9_-]`).ReplaceAllString(cols[2], "_")
+		device := util.SanitizeMetricKey(cols[2])
 		values := cols[3:]
 
 		if len(values) != len(diskMetricsNames) {
