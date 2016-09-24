@@ -93,7 +93,7 @@ func (g *DiskGenerator) collectDiskstatValues() (metrics.Values, error) {
 
 func parseDiskStats(r io.Reader) (metrics.Values, error) {
 	lineScanner := bufio.NewScanner(r)
-	results := make(map[string]float64)
+	results := metrics.Values{}
 	for lineScanner.Scan() {
 		text := lineScanner.Text()
 		cols := strings.Fields(text)
