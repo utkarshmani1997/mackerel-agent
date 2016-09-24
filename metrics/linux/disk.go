@@ -68,7 +68,7 @@ func (g *DiskGenerator) Generate() (metrics.Values, error) {
 		return nil, err
 	}
 
-	ret := make(map[string]float64)
+	ret := metrics.Values{}
 	for name, value := range prevValues {
 		if !postDiskMetricsRegexp.MatchString(name) {
 			continue
@@ -78,8 +78,7 @@ func (g *DiskGenerator) Generate() (metrics.Values, error) {
 			ret[name+".delta"] = (currValue - value) / g.Interval.Seconds()
 		}
 	}
-
-	return metrics.Values(ret), nil
+	return ret, nil
 }
 
 func (g *DiskGenerator) collectDiskstatValues() (metrics.Values, error) {
@@ -112,8 +111,8 @@ func parseDiskStats(r io.Reader) (metrics.Values, error) {
 
 		deviceResult := make(map[string]float64)
 		hasNonZeroValue := false
-		for i := range diskMetricsNames {
-			key := fmt.Sprintf("disk.%s.%s", device, diskMetricsNames[i])
+		for i, metricName := range diskMetricsNames {
+			key := fmt.Sprintf("disk.%s.%s", device, metricName)
 			value, err := strconv.ParseFloat(values[i], 64)
 			if err != nil {
 				diskLogger.Warningf("Failed to parse disk metrics: %s", err)
