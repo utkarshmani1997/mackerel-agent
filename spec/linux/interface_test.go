@@ -42,7 +42,7 @@ func TestInterfaceGenerate(t *testing.T) {
 		t.Error("interface should have address")
 	}
 	if iface.DefaultGateway == "" {
-		t.Error("interface should have defaultGateway")
+		t.Errorf("interface should have defaultGateway: %v", iface)
 	}
 }
 
