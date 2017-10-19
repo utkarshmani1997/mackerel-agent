@@ -33,7 +33,7 @@ deps: generate
 	go get github.com/mackerelio/go-osstat/... # to build darwin on TravisCI (can be deleted after we use go-osstat on linux)
 
 lint: deps
-	go tool vet -all -printfuncs=Criticalf,Infof,Warningf,Debugf,Tracef .
+	go tool vet -all -printfuncs=Criticalf,Infof,Warningf,Debugf,Tracef $(go list ./... | grep -v /vendor/)
 	_tools/go-linter $(BUILD_OS_TARGETS)
 
 crossbuild: deps
